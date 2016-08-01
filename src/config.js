@@ -5,12 +5,9 @@ const DEFAULT = {
     ENV: "development"
 };
 
-const pick = (keys, obj) => keys.reduce((res, key) => {
-    if (obj[key] === undefined) return res;
-    return {
-        ...res,
-        [key]: obj[key]
-    };
-}, {});
+const pick = (keys, obj) => keys.reduce((res, key) => ({
+    ...res,
+    [key]: obj[key] === undefined ? DEFAULT[key] : obj[key]
+}), {});
 
-export default pick(Object.keys(DEFAULT), process.env);
+export default () => pick(Object.keys(DEFAULT), process.env);

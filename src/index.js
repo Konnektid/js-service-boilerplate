@@ -1,6 +1,7 @@
 import express from "express";
-import { PORT, ENV } from "./config";
+import getConfif from "./config";
 
+const { PORT, ENV } = getConfig();
 const app = express();
 
 app.get("/", (req, res) => {
