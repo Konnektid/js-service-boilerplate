@@ -1,0 +1,39 @@
+{
+  "name": "konnektid-js-service-boilerplate",
+  "version": "0.0.1",
+  "description": "Opinionated boilerplate used in Konnektid to build services in express",
+  "main": "dist/index.js",
+  "scripts": {
+    "eslint": "eslint src",
+    "build": "babel src --out-dir dist --ignore $npm_package_config_buildignore --source-maps --copy-files",
+    "start": "node dist/index.js",
+    "start:dev": "nodemon --exitcrash --watch src -e js,jsx --exec babel-node src/index.js",
+    "test": "babel-node node_modules/.bin/babel-istanbul cover --root src/ --include-all-sources _mocha -- --timeout 10000 --recursive $(find src -name __test__ -not -path '*/node_modules/*')"
+  },
+  "config": {
+    "buildignore": "__test__"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/konnektid/js-service-boilerplate"
+  },
+  "author": "Simone Potenza <simone@konnektid.com>",
+  "bugs": {
+    "url": "https://github.com/konnektid/js-service-boilerplate"
+  },
+  "homepage": "https://github.com/konnektid/js-service-boilerplate",
+  "dependencies": {
+    "babel-preset-konnektid": "github:konnektid/babel-preset-konnektid",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-eslint": "^6.1.2",
+    "babel-istanbul": "^0.11.0",
+    "eslint": "^3.2.0",
+    "eslint-config-konnektid": "github:konnektid/eslint-config-konnektid",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-react": "^5.2.2",
+    "nodemon": "^1.10.0"
+  }
+}
